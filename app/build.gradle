@@ -58,6 +58,10 @@ dependencies {
 
     // project
     implementation project(':navigator')
+    implementation project(':foundation')
+    implementation project(':api:domain')
+    implementation project(':api:model')
+    implementation project(':api:remote')
     implementation project(':featureOne')
     implementation project(':featureTwo')
 }

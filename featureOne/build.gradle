@@ -55,4 +55,5 @@ dependencies {
 
     // project
     implementation project(':foundation')
+    implementation project(':api:domain')
 }
