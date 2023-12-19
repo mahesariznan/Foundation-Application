@@ -1,10 +1,25 @@
+apply plugin: 'com.android.library'
 apply from: "$rootDir/common.gradle"
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     namespace 'com.iznan.featuretwo'
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    // navigation
+    implementation Libraries.navigation
+    implementation Libraries.navigationUi
+
+    // hilt
+    implementation Libraries.hilt
+    kapt Libraries.hiltCompiler
 
     // project
     implementation project(Modules.foundation)
