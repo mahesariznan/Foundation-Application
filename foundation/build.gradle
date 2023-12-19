@@ -31,7 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '18'
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -46,10 +46,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation Libraries.navigation
+    implementation Libraries.navigationUi
 
     // hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation Libraries.hilt
+    kapt Libraries.hiltCompiler
 }

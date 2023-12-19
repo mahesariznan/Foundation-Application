@@ -43,14 +43,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation Libraries.hilt
+    kapt Libraries.hiltCompiler
 
     // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation Libraries.retrofit
+    implementation Libraries.retrofitConverter
 
     // project
-    implementation project(":api:model")
-    implementation project(":api:domain")
+    implementation project(Modules.model)
+    implementation project(Modules.domain)
 }

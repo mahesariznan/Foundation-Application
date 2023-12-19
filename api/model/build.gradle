@@ -40,5 +40,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // gson
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation Libraries.retrofitConverter
 }

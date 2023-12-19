@@ -42,9 +42,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation Libraries.hilt
+    kapt Libraries.hiltCompiler
 
     // project
-    implementation project(":api:model")
+    implementation project(Modules.model)
 }
