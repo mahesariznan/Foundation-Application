@@ -1,3 +1,11 @@
+/captures/*
+.gradle/*
+/build
+*.iml
+*.hprof
+.idea/*
+**/*-docs/*
+
 *.iml
 .gradle
 /local.properties
