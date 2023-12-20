@@ -1,6 +1,7 @@
 package com.iznan.foundationapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = findNavController(R.id.nav_host_fragment)
+        Log.e("IZN", "IZN buildConfig: ${BuildConfig.BASE_NAME}")
     }
 
     override fun onResume() {

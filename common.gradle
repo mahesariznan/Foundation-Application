@@ -14,13 +14,27 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+
+        }
+    }
+    flavorDimensions "mode"
+    productFlavors {
+        development {
+            dimension "mode"
+            buildConfigField 'String', 'BASE_NAME', BASE_NAME_DEV
+        }
+        production {
+            dimension "mode"
+            buildConfigField 'String', 'BASE_NAME', BASE_NAME_PROD
+        }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_18
         targetCompatibility JavaVersion.VERSION_18
     }
-    
+
     kotlinOptions {
         jvmTarget = '18'
     }
