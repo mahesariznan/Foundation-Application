@@ -26,6 +26,7 @@ class PageOneFragment : BaseFragment<FragmentPageOneBinding>() {
     }
 
     override fun initView(): FragmentPageOneBinding? = binding?.apply {
+        isBottomNavigationShow = true
         observeNavigation(viewModel)
         btnGotoOtherModule.setOnClickListener(goToOtherModule())
         btnGoToOtherModuleDifferentStart.setOnClickListener(goToOtherModuleDifferentStart())

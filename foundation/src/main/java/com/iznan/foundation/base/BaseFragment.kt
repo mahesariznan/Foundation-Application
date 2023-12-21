@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 abstract class BaseFragment<T : ViewDataBinding?> : Fragment() {
 
     protected var binding: T? = null
+    protected var isBottomNavigationShow = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +25,7 @@ abstract class BaseFragment<T : ViewDataBinding?> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        shouldShowBottomNavigation(isBottomNavigationShow)
     }
 
     override fun onDestroyView() {
@@ -42,5 +44,8 @@ abstract class BaseFragment<T : ViewDataBinding?> : Fragment() {
             }
         }
     }
+
+    fun shouldShowBottomNavigation(isVisible: Boolean) =
+        (activity as? BaseActivity)?.shouldShowBottomNavigation(isVisible)
 
 }

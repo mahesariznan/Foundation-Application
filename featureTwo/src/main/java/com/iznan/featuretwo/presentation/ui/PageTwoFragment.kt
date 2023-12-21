@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.iznan.featuretwo.databinding.FragmentPageTwoBinding
 import com.iznan.featuretwo.presentation.viewmodel.PageTwoViewModel
 import com.iznan.foundation.base.BaseFragment
@@ -14,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PageTwoFragment : BaseFragment<FragmentPageTwoBinding>() {
 
     private val viewModel: PageTwoViewModel by viewModels()
-    private val args: PageTwoFragmentArgs by navArgs()
+//    private val args: PageTwoFragmentArgs by navArgs() // navArgs return null if direction from bottom navigation
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -24,8 +23,10 @@ class PageTwoFragment : BaseFragment<FragmentPageTwoBinding>() {
     }
 
     override fun initView() = binding?.apply {
+        isBottomNavigationShow = true
         observeNavigation(viewModel)
-        tvData.text = "Hello Page 2 with data: ${args.extraData}"
+//        tvData.text = "Hello Page 2 with data: ${args.extraData}"
+        tvData.text = "Hello Page 2 with data: ${arguments?.getString("extraData")}"
         btnGoToPageThree.setOnClickListener(goToOtherPage())
     }
 
