@@ -17,6 +17,9 @@ dependencies {
     implementation Libraries.retrofit
     implementation Libraries.retrofitConverter
 
+    // data store
+    implementation Libraries.dataStore
+
     // project
     implementation project(Modules.model)
     implementation project(Modules.domain)

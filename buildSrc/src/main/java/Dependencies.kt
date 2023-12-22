@@ -13,6 +13,7 @@ object Versions {
     const val nav_version = "2.7.5"
     const val hilt_version = "2.49"
     const val retrofit_version = "2.9.0"
+    const val data_store_version = "1.0.0"
 }
 
 object Libraries {
@@ -30,4 +31,7 @@ object Libraries {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     const val retrofitConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
+
+    // datastore
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.data_store_version}"
 }

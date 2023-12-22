@@ -32,6 +32,7 @@ class PageOneFragment : BaseFragment<FragmentPageOneBinding>() {
         btnGoToOtherModuleDifferentStart.setOnClickListener(goToOtherModuleDifferentStart())
         btnGetApiData.setOnClickListener(getApiData())
         observeData()
+        viewModel.getLastCoinName()
     }
 
     private fun goToOtherModule() = OnClickListener {

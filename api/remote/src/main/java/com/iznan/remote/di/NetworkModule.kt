@@ -1,11 +1,16 @@
 package com.iznan.remote.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.iznan.remote.api.CryptoCoinService
 import com.iznan.remote.datasource.CryptoCoinDataSource
 import com.iznan.remote.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -48,5 +53,13 @@ object NetworkModule {
     fun provideCryptoDataSource(cryptoCoinService: CryptoCoinService): CryptoCoinDataSource {
         return CryptoCoinDataSource(cryptoCoinService)
     }
+
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "store_preference")
+
+    @Singleton
+    @Provides
+    fun provideDataStore(
+        @ApplicationContext context: Context
+    ): DataStore<Preferences> = context.dataStore
 
 }

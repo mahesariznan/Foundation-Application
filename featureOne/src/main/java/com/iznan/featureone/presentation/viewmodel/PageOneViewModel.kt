@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.iznan.domain.base.Resource
 import com.iznan.domain.usecase.CryptoCoinUseCase
+import com.iznan.domain.usecase.DataStoreUseCase
 import com.iznan.featureone.navigation.IFeatureOneNavigation
 import com.iznan.foundation.base.BaseViewModel
 import com.iznan.foundation.base.CompDispatchers
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class PageOneViewModel @Inject constructor(
     private val nav: IFeatureOneNavigation,
     private val cryptoCoinUseCase: CryptoCoinUseCase,
+    private val dataStoreUseCase: DataStoreUseCase,
     private val dispatchers: CompDispatchers
 ) : BaseViewModel() {
 
@@ -40,7 +42,10 @@ class PageOneViewModel @Inject constructor(
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
                     Log.e("IZN", "IZN, SUCCESS: ${resource}")
-                    _dataApi.value = ("data api: ${resource.data?.firstOrNull()?.symbol}")
+                    resource.data?.firstOrNull()?.symbol?.let {
+                        saveCoinName(it)
+                        _dataApi.value = ("data api: $it}")
+                    }
                 }
 
                 Resource.Status.ERROR -> {
@@ -51,6 +56,16 @@ class PageOneViewModel @Inject constructor(
                     Log.e("IZN", "IZN LOADING: ${resource}")
                 }
             }
+        }
+    }
+
+    internal fun saveCoinName(coinName: String) = viewModelScope.launch(dispatchers.io) {
+        dataStoreUseCase.saveCoinName(coinName)
+    }
+
+    internal fun getLastCoinName() = viewModelScope.launch(dispatchers.io) {
+        dataStoreUseCase.getCoinName().collectLatest {
+            _dataApi.value = ("last data api: $it")
         }
     }
 
