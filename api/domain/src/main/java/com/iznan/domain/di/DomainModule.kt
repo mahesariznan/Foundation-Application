@@ -1,7 +1,9 @@
 package com.iznan.domain.di
 
+import com.iznan.domain.irepository.ICoinDatabaseRepository
 import com.iznan.domain.irepository.ICryptoCoinRepository
 import com.iznan.domain.irepository.IDataStoreRepository
+import com.iznan.domain.usecase.CoinDatabaseUseCase
 import com.iznan.domain.usecase.CryptoCoinUseCase
 import com.iznan.domain.usecase.DataStoreUseCase
 import dagger.Module
@@ -21,6 +23,11 @@ object DomainModule {
     @Provides
     fun provideDataSoreUseCase(dataStoreRepository: IDataStoreRepository): DataStoreUseCase {
         return DataStoreUseCase(dataStoreRepository)
+    }
+
+    @Provides
+    fun provideCoinDatabaseUseCase(coinDatabaseRepository: ICoinDatabaseRepository): CoinDatabaseUseCase {
+        return CoinDatabaseUseCase(coinDatabaseRepository)
     }
 
 }

@@ -12,6 +12,11 @@ dependencies {
     implementation Libraries.hilt
     kapt Libraries.hiltCompiler
 
+    // room
+    implementation Libraries.room
+    kapt Libraries.roomCompiler
+    implementation Libraries.roomKtx
+
     // project
     implementation project(Modules.model)
 }

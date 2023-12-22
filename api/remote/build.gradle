@@ -20,6 +20,11 @@ dependencies {
     // data store
     implementation Libraries.dataStore
 
+    // room
+    implementation Libraries.room
+    kapt Libraries.roomCompiler
+    implementation Libraries.roomKtx
+
     // project
     implementation project(Modules.model)
     implementation project(Modules.domain)

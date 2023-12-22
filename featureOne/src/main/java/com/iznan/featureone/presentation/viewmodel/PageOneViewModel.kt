@@ -1,8 +1,11 @@
 package com.iznan.featureone.presentation.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.iznan.domain.base.Resource
+import com.iznan.domain.entity.Coin
+import com.iznan.domain.usecase.CoinDatabaseUseCase
 import com.iznan.domain.usecase.CryptoCoinUseCase
 import com.iznan.domain.usecase.DataStoreUseCase
 import com.iznan.featureone.navigation.IFeatureOneNavigation
@@ -20,11 +23,12 @@ class PageOneViewModel @Inject constructor(
     private val nav: IFeatureOneNavigation,
     private val cryptoCoinUseCase: CryptoCoinUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
+    private val coinDatabaseUseCase: CoinDatabaseUseCase,
     private val dispatchers: CompDispatchers
 ) : BaseViewModel() {
 
-//    private val _dataApi = MutableLiveData<String>()
-//    val dataApi = _dataApi
+    private val _dataRoom = MutableLiveData<List<Coin>>()
+    val dataRoom = _dataRoom
 
     private val _dataApi = MutableStateFlow("")
     val dataApi = _dataApi.asStateFlow()
@@ -42,9 +46,10 @@ class PageOneViewModel @Inject constructor(
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
                     Log.e("IZN", "IZN, SUCCESS: ${resource}")
-                    resource.data?.firstOrNull()?.symbol?.let {
-                        saveCoinName(it)
-                        _dataApi.value = ("data api: $it}")
+                    resource.data?.firstOrNull()?.apply {
+                        insertCoinDatabase(this)
+                        saveCoinName(symbol)
+                        _dataApi.value = ("data api: $symbol}")
                     }
                 }
 
@@ -66,6 +71,16 @@ class PageOneViewModel @Inject constructor(
     internal fun getLastCoinName() = viewModelScope.launch(dispatchers.io) {
         dataStoreUseCase.getCoinName().collectLatest {
             _dataApi.value = ("last data api: $it")
+        }
+    }
+
+    internal fun insertCoinDatabase(coin: Coin) = viewModelScope.launch(dispatchers.io) {
+        coinDatabaseUseCase.insertCoinDatabase(coin)
+    }
+
+    internal fun getCoinDatabase() = viewModelScope.launch(dispatchers.io) {
+        coinDatabaseUseCase.getCoinDatabase().collectLatest {
+            _dataRoom.postValue(it)
         }
     }
 

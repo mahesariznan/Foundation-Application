@@ -14,6 +14,7 @@ object Versions {
     const val hilt_version = "2.49"
     const val retrofit_version = "2.9.0"
     const val data_store_version = "1.0.0"
+    const val room_version = "2.5.1"
 }
 
 object Libraries {
@@ -34,4 +35,9 @@ object Libraries {
 
     // datastore
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.data_store_version}"
+
+    // room
+    const val room = "androidx.room:room-runtime:${Versions.room_version}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room_version}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room_version}"
 }

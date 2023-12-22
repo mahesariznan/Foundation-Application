@@ -5,6 +5,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.iznan.featureone.databinding.FragmentPageOneBinding
@@ -33,6 +34,7 @@ class PageOneFragment : BaseFragment<FragmentPageOneBinding>() {
         btnGetApiData.setOnClickListener(getApiData())
         observeData()
         viewModel.getLastCoinName()
+        viewModel.getCoinDatabase()
     }
 
     private fun goToOtherModule() = OnClickListener {
@@ -49,9 +51,9 @@ class PageOneFragment : BaseFragment<FragmentPageOneBinding>() {
 
     private fun observeData() = with(viewModel) {
         // LiveData
-//        dataApi.observe(viewLifecycleOwner, Observer {
-//            binding?.tvApiData?.text = it
-//        })
+        dataRoom.observe(viewLifecycleOwner, Observer {
+            binding?.tvDatabaseData?.text = "data database: ${it.toString()}"
+        })
 
         // StateFlow
         viewLifecycleOwner.lifecycleScope.launch {
