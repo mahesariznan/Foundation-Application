@@ -1,7 +1,6 @@
 package com.iznan.foundationapplication
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -9,12 +8,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.iznan.foundation.base.BaseActivity
 import com.iznan.foundationapplication.databinding.ActivityMainBinding
+import com.iznan.foundationapplication.section.ChuckerSection
+import com.iznan.foundationapplication.section.ChuckerSectionDelegate
 import com.iznan.navigator.NavControllerBinder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity(
+    private val chuckerSection: ChuckerSection = ChuckerSection()
+) : BaseActivity(), ChuckerSectionDelegate by chuckerSection {
 
     @Inject
     lateinit var navControllerBinder: NavControllerBinder
@@ -51,7 +54,9 @@ class MainActivity : BaseActivity() {
                 else -> false
             }
         }
-        Log.e("IZN", "IZN buildConfig: ${BuildConfig.BASE_NAME}")
+        if (BuildConfig.BASE_NAME.contains("development")) {
+            requestNotificationPermission()
+        }
     }
 
     override fun onResume() {

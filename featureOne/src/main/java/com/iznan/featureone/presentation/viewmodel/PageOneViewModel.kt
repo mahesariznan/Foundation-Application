@@ -49,7 +49,7 @@ class PageOneViewModel @Inject constructor(
                     resource.data?.firstOrNull()?.apply {
                         insertCoinDatabase(this)
                         saveCoinName(symbol)
-                        _dataApi.value = ("data api: $symbol}")
+                        _dataApi.value = ("data api: $symbol")
                     }
                 }
 

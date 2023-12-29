@@ -15,6 +15,7 @@ object Versions {
     const val retrofit_version = "2.9.0"
     const val data_store_version = "1.0.0"
     const val room_version = "2.5.1"
+    const val chucker_version = "4.0.0"
 }
 
 object Libraries {
@@ -40,4 +41,9 @@ object Libraries {
     const val room = "androidx.room:room-runtime:${Versions.room_version}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room_version}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room_version}"
+
+    // chucker
+    const val chuckerDebug = "com.github.chuckerteam.chucker:library:${Versions.chucker_version}"
+    const val chuckerRelease =
+        "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker_version}"
 }

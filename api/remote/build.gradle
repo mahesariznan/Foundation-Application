@@ -25,6 +25,10 @@ dependencies {
     kapt Libraries.roomCompiler
     implementation Libraries.roomKtx
 
+    //chucker
+    debugImplementation Libraries.chuckerDebug
+    releaseImplementation Libraries.chuckerRelease
+
     // project
     implementation project(Modules.model)
     implementation project(Modules.domain)

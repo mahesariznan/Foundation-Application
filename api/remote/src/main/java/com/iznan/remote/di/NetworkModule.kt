@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.iznan.remote.api.CryptoCoinService
 import com.iznan.remote.dao.CoinDao
 import com.iznan.remote.datasource.CryptoCoinDataSource
@@ -37,11 +38,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkhttpCLient(): OkHttpClient {
+    fun provideOkhttpCLient(@ApplicationContext context: Context): OkHttpClient {
         return OkHttpClient().newBuilder()
             .connectTimeout(Constants.API_CONNECT_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
             .writeTimeout(Constants.API_WRITE_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
             .readTimeout(Constants.API_READ_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
+            .addInterceptor(ChuckerInterceptor(context))
             .build()
     }
 
