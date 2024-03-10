@@ -16,6 +16,8 @@ object Versions {
     const val data_store_version = "1.0.0"
     const val room_version = "2.5.1"
     const val chucker_version = "4.0.0"
+    const val compose_compiler_version = "1.5.4"
+    const val kotlin_version = "1.8.20"
 }
 
 object Libraries {
@@ -46,4 +48,11 @@ object Libraries {
     const val chuckerDebug = "com.github.chuckerteam.chucker:library:${Versions.chucker_version}"
     const val chuckerRelease =
         "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker_version}"
+
+    // compose
+    const val composePreview = "androidx.compose.ui:ui-tooling-preview"
+    const val composeUi = "androidx.compose.ui:ui"
+    const val compose = "androidx.compose:compose-bom:2023.01.00"
+    const val composeMaterial = "androidx.compose.material3:material3"
+    const val composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 }

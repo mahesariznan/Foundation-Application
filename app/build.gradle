@@ -3,6 +3,7 @@ apply from: "$rootDir/common.gradle"
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     namespace 'com.iznan.foundationapplication'
@@ -36,6 +37,7 @@ dependencies {
 
     // hilt
     implementation Libraries.hilt
+    implementation 'androidx.core:core-ktx:+'
     kapt Libraries.hiltCompiler
 
     // project

@@ -3,6 +3,7 @@ apply from: "$rootDir/common.gradle"
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     namespace 'com.iznan.remote'
@@ -11,6 +12,7 @@ android {
 dependencies {
     // hilt
     implementation Libraries.hilt
+    implementation 'androidx.core:core-ktx:+'
     kapt Libraries.hiltCompiler
 
     // retrofit

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply from: "$rootDir/common.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     namespace 'com.iznan.model'
@@ -8,4 +9,5 @@ android {
 dependencies {
     // gson
     implementation Libraries.retrofitConverter
+    implementation 'androidx.core:core-ktx:+'
 }

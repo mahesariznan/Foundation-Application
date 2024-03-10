@@ -3,12 +3,19 @@ apply from: "$rootDir/common.gradle"
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     namespace 'com.iznan.foundation'
 
     dataBinding {
         enabled = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose_compiler_version
     }
 }
 
@@ -17,7 +24,14 @@ dependencies {
     implementation Libraries.navigation
     implementation Libraries.navigationUi
 
+    // compose
+    implementation platform(Libraries.compose)
+    implementation Libraries.composeUi
+    implementation Libraries.composePreview
+    implementation Libraries.composeMaterial
+
     // hilt
     implementation Libraries.hilt
+    implementation 'androidx.core:core-ktx:+'
     kapt Libraries.hiltCompiler
 }
