@@ -18,6 +18,7 @@ object Versions {
     const val chucker_version = "4.0.0"
     const val compose_compiler_version = "1.5.4"
     const val kotlin_version = "1.8.20"
+    const val core_version = "1.12.0"
 }
 
 object Libraries {
@@ -55,4 +56,7 @@ object Libraries {
     const val compose = "androidx.compose:compose-bom:2023.01.00"
     const val composeMaterial = "androidx.compose.material3:material3"
     const val composeConstraint = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    // core
+    const val core = "androidx.core:core-ktx:${Versions.core_version}"
 }

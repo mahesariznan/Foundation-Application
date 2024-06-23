@@ -16,7 +16,7 @@ dependencies {
 
     // hilt
     implementation Libraries.hilt
-    implementation 'androidx.core:core-ktx:+'
+    implementation Libraries.core
     kapt Libraries.hiltCompiler
 
     // project

@@ -9,5 +9,5 @@ android {
 dependencies {
     // gson
     implementation Libraries.retrofitConverter
-    implementation 'androidx.core:core-ktx:+'
+    implementation Libraries.core
 }
