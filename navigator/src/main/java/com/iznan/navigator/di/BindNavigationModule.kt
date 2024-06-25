@@ -1,6 +1,6 @@
 package com.iznan.navigator.di
 
-import com.iznan.featureone.navigation.IFeatureOneNavigation
+import com.iznan.carousell.navigation.IFeatureOneNavigation
 import com.iznan.navigator.navigation.FeatureOneNavigation
 import dagger.Binds
 import dagger.Module

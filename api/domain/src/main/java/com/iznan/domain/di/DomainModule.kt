@@ -1,11 +1,7 @@
 package com.iznan.domain.di
 
-import com.iznan.domain.irepository.ICoinDatabaseRepository
-import com.iznan.domain.irepository.ICryptoCoinRepository
-import com.iznan.domain.irepository.IDataStoreRepository
-import com.iznan.domain.usecase.CoinDatabaseUseCase
-import com.iznan.domain.usecase.CryptoCoinUseCase
-import com.iznan.domain.usecase.DataStoreUseCase
+import com.iznan.domain.irepository.INewsRepository
+import com.iznan.domain.usecase.CarousellUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,18 +12,8 @@ import dagger.hilt.android.components.ViewModelComponent
 object DomainModule {
 
     @Provides
-    fun provideCryptoCoinUseCase(coinRepository: ICryptoCoinRepository): CryptoCoinUseCase {
-        return CryptoCoinUseCase(coinRepository)
-    }
-
-    @Provides
-    fun provideDataSoreUseCase(dataStoreRepository: IDataStoreRepository): DataStoreUseCase {
-        return DataStoreUseCase(dataStoreRepository)
-    }
-
-    @Provides
-    fun provideCoinDatabaseUseCase(coinDatabaseRepository: ICoinDatabaseRepository): CoinDatabaseUseCase {
-        return CoinDatabaseUseCase(coinDatabaseRepository)
+    fun provideCarousellUseCase(newsRepository: INewsRepository): CarousellUseCase {
+        return CarousellUseCase(newsRepository)
     }
 
 }

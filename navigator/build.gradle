@@ -20,6 +20,5 @@ dependencies {
     kapt Libraries.hiltCompiler
 
     // project
-    implementation project(Modules.featureOne)
-    implementation project(Modules.featureTwo)
+    implementation project(Modules.carousell)
 }

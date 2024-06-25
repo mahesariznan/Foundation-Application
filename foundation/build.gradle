@@ -29,6 +29,10 @@ dependencies {
     implementation Libraries.composeUi
     implementation Libraries.composePreview
     implementation Libraries.composeMaterial
+    implementation Libraries.coil
+
+    // lottie
+    implementation Libraries.lottie
 
     // hilt
     implementation Libraries.hilt

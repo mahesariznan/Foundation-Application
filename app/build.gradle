@@ -46,6 +46,5 @@ dependencies {
     implementation project(Modules.domain)
     implementation project(Modules.model)
     implementation project(Modules.remote)
-    implementation project(Modules.featureOne)
-    implementation project(Modules.featureTwo)
+    implementation project(Modules.carousell)
 }

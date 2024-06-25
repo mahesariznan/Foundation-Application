@@ -2,7 +2,6 @@ package com.iznan.remote.handler
 
 import com.google.gson.Gson
 import com.iznan.domain.base.Resource
-import com.iznan.model.base.BaseResponseData
 import com.iznan.model.responsedata.ErrorResponseData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -13,10 +12,9 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
-fun <ResponseType : BaseResponseData, ResultType> networkHandling(
+fun <ResponseType : Any, ResultType> networkHandling(
     callApi: suspend () -> Response<ResponseType>,
-    processResult: (response: ResponseType?) -> ResultType?,
-    processMessageResult: (response: ResponseType?) -> String? = { it?.message }
+    processResult: (response: ResponseType?) -> ResultType?
 ): Flow<Resource<ResultType>> = flow {
     emit(Resource.loading())
     try {
@@ -24,7 +22,7 @@ fun <ResponseType : BaseResponseData, ResultType> networkHandling(
             when {
                 isSuccessful -> {
                     val response = body()
-                    emit(Resource.success(processResult(response), processMessageResult(response)))
+                    emit(Resource.success(processResult(response)))
                 }
 
                 else -> {

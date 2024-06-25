@@ -14,9 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Foundation Application"
 include ':app'
-include ':featureTwo'
 include ':navigator'
-include ':featureOne'
+include ':carousell'
 include ':foundation'
 include ':api:remote'
 include ':api:domain'

@@ -1,15 +1,9 @@
 package com.iznan.remote.di
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
-import androidx.room.Room
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.iznan.remote.api.CryptoCoinService
-import com.iznan.remote.dao.CoinDao
-import com.iznan.remote.datasource.CryptoCoinDataSource
-import com.iznan.remote.datasource.RoomDatabaseDataSource
+import com.iznan.remote.api.NewsService
+import com.iznan.remote.datasource.NewsDataSource
 import com.iznan.remote.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -49,36 +43,14 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCryptoCoinService(retrofit: Retrofit): CryptoCoinService {
-        return retrofit.create(CryptoCoinService::class.java)
+    fun provideNewsService(retrofit: Retrofit): NewsService {
+        return retrofit.create(NewsService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCryptoDataSource(cryptoCoinService: CryptoCoinService): CryptoCoinDataSource {
-        return CryptoCoinDataSource(cryptoCoinService)
-    }
-
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "store_preference")
-
-    @Singleton
-    @Provides
-    fun provideDataStore(
-        @ApplicationContext context: Context
-    ): DataStore<Preferences> = context.dataStore
-
-    @Singleton
-    @Provides
-    fun provideRoomDatabase(@ApplicationContext context: Context): RoomDatabaseDataSource {
-        return Room
-            .databaseBuilder(context, RoomDatabaseDataSource::class.java, "foundation_database.db")
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideCoinDao(roomDatabaseDataSource: RoomDatabaseDataSource): CoinDao {
-        return roomDatabaseDataSource.coinDao()
+    fun provideNewsDataSource(newsService: NewsService): NewsDataSource {
+        return NewsDataSource(newsService)
     }
 
 }

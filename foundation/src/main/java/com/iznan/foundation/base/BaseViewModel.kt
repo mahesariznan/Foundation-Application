@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import com.iznan.foundation.util.Event
 
-abstract class BaseViewModel: ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     private val _navigation = MutableLiveData<Event<NavDirections>>()
     val navigation: LiveData<Event<NavDirections>> = _navigation
